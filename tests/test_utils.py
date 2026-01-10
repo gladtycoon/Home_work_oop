@@ -1,5 +1,6 @@
 from src.created_classes import Category
 
+
 def test_product_init(class_product):
     assert class_product.name == "name"
     assert class_product.description == "description"
