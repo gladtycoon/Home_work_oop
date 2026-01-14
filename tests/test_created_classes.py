@@ -4,8 +4,8 @@ from src.created_classes import Category, Product
 def test_product_init(class_product):
     assert class_product.name == "name"
     assert class_product.description == "description"
-    assert class_product.price == "price"
-    assert class_product.quantity == "quantity"
+    assert class_product.price == 180000
+    assert class_product.quantity == 5
 
 
 def test_category_init(class_category):
