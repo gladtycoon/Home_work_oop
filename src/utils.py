@@ -1,7 +1,7 @@
 import json
 import os
 
-from created_classes import Category, Product
+from src.created_classes import Category, Product
 
 
 def read_json(path: str) -> list[dict]:
