@@ -9,7 +9,7 @@ def test_product_init(class_product):
 
 
 def test_category_init(class_category):
-    assert class_category.name == "name"
+    assert class_category.name == "Смартфоны"
     assert class_category.description == "description"
     assert class_category.products == ""
 
@@ -55,3 +55,11 @@ def test_price_setter(class_product):
     class_product.price = -100.0
     assert class_product.price == 180000.0  # Цена не изменилась!
     print(f"Цена после попытки установить 0.0: {class_product.price}")
+
+
+def test_product_str(product):
+    assert str(product) == "Samsung Galaxy S23 Ultra, 180000 руб. Остаток: 5 шт."
+
+
+def test_category_str(class_category):
+    assert str(class_category) == "Смартфоны, количество продуктов: 0 шт."
