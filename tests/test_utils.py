@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from src.utils import read_json, create_objects_from_json
+from src.utils import create_objects_from_json, read_json
 
 
 def test_read_json_valid_file(tmp_path):
@@ -33,8 +33,16 @@ def test_read_json_file_not_found():
 def test_create_objects_multiple_categories():
     """Проверяет создание объектов для нескольких категорий."""
     json_data = [
-        {"name": "cat1", "description": "description_cat1", "products": [{"name": "prod1", "description": "description_prod1", "price": 100.0, "quantity": 1}]},
-        {"name": "cat2", "description": "description_cat2", "products": [{"name": "prod2", "description": "description_prod2", "price": 200.0, "quantity": 2}]}
+        {
+            "name": "cat1",
+            "description": "description_cat1",
+            "products": [{"name": "prod1", "description": "description_prod1", "price": 100.0, "quantity": 1}],
+        },
+        {
+            "name": "cat2",
+            "description": "description_cat2",
+            "products": [{"name": "prod2", "description": "description_prod2", "price": 200.0, "quantity": 2}],
+        },
     ]
     categories = create_objects_from_json(json_data)
     assert len(categories) == 2

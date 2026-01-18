@@ -11,6 +11,13 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    # Строковое отображение в заданном виде
+    def __str__(self):
+        return f"{self.name}, {int(self.price)} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
+
     # Геттер для доступа к приватному атрибуту
     @property
     def price(self):
@@ -47,9 +54,16 @@ class Category:
         self.name = name
         self.description = description
         self.__products = products  # создание приватного атрибута списка товаров
-
+        self.sum_product = 0
         Category.category_count += 1
         Category.product_count += len(products)
+
+        for product in self.__products:
+            self.sum_product += product.quantity
+
+    # Строковое отображение в заданном виде
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {self.sum_product} шт."
 
     # Метод, в который нужно передавать объект класса Product
     # и уже его записывать в приватный атрибут списка товаров
@@ -62,7 +76,7 @@ class Category:
     def products(self):
         product_str = ""
         for product in self.__products:
-            product_str += f"{product.name}, {int(product.price)} руб. Остаток: {product.quantity} шт.\n"
+            product_str += f"{str(product)}\n"
         return product_str
 
     @property
