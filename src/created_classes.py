@@ -41,6 +41,7 @@ class Product:
             quantity=product_data["quantity"],
         )
 
+
 # Создание и инициализация класса Smartphone - наследника от класса Product
 class Smartphone(Product):
     def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
@@ -49,7 +50,6 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
-
 
     def __add__(self, other):
         if type(other) is Smartphone:
@@ -102,7 +102,6 @@ class Category:
             Category.product_count += 1
         else:
             raise TypeError
-
 
     # Геттер, который выводит список товаров в виде строк в заданном формате
     @property

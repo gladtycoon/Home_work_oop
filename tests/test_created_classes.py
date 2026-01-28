@@ -1,5 +1,6 @@
-from src.created_classes import Category, Product, Smartphone, LawnGrass
 import pytest
+
+from src.created_classes import Category, Product
 
 
 def test_product_init(class_product):
@@ -45,7 +46,7 @@ def test_new_product():
     created_product.quantity = 5
 
 
-def test_price_setter(class_product):
+def test_price_setter_prod(class_product):
     class_product.price = 180000.0
     assert class_product.price == 180000.0
 
@@ -83,7 +84,7 @@ def test_smartphone_subclass_add(smartphone2, smartphone3):
 
 def test_smartphone_subclass_add_error(smartphone2, smartphone3):
     with pytest.raises(TypeError):
-        result = smartphone2 + 1
+        smartphone2 + 1
 
 
 def test_lawngrass_subclass_init(grass1):
@@ -100,6 +101,6 @@ def test_lawngrass_subclass_add(grass1, grass2):
     assert grass1 + grass2 == 35
 
 
-def test_smartphone_subclass_add_error(grass1, grass2):
+def test_lawngrass_subclass_add_error(grass1, grass2):
     with pytest.raises(TypeError):
-        result = grass1 + 1
+        grass1 + 1

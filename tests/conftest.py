@@ -1,6 +1,6 @@
 import pytest
 
-from src.created_classes import Category, Product, Smartphone, LawnGrass
+from src.created_classes import Category, LawnGrass, Product, Smartphone
 from src.products_iterator import ProductIterator
 
 
@@ -65,12 +65,6 @@ def smartphone2():
 @pytest.fixture
 def smartphone3():
     return Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14, 90.3, "Note 11", 1024, "Синий")
-
-
-@pytest.fixture
-def smartphone2():
-    return Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
-
 
 
 @pytest.fixture
