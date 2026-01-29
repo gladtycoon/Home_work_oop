@@ -1,3 +1,5 @@
+import pytest
+
 from src.created_classes import Category, Product
 
 
@@ -44,7 +46,7 @@ def test_new_product():
     created_product.quantity = 5
 
 
-def test_price_setter(class_product):
+def test_price_setter_prod(class_product):
     class_product.price = 180000.0
     assert class_product.price == 180000.0
 
@@ -63,3 +65,42 @@ def test_product_str(product):
 
 def test_category_str(class_category):
     assert str(class_category) == "Смартфоны, количество продуктов: 0 шт."
+
+
+def test_smartphone_subclass_init(smartphone2):
+    assert smartphone2.name == "Iphone 15"
+    assert smartphone2.description == "512GB, Gray space"
+    assert smartphone2.price == 210000.0
+    assert smartphone2.quantity == 8
+    assert smartphone2.efficiency == 98.2
+    assert smartphone2.model == "15"
+    assert smartphone2.memory == 512
+    assert smartphone2.color == "Gray space"
+
+
+def test_smartphone_subclass_add(smartphone2, smartphone3):
+    assert smartphone2 + smartphone3 == 22
+
+
+def test_smartphone_subclass_add_error(smartphone2, smartphone3):
+    with pytest.raises(TypeError):
+        smartphone2 + 1
+
+
+def test_lawngrass_subclass_init(grass1):
+    assert grass1.name == "Газонная трава"
+    assert grass1.description == "Элитная трава для газона"
+    assert grass1.price == 500
+    assert grass1.quantity == 20
+    assert grass1.country == "Россия"
+    assert grass1.germination_period == "7 дней"
+    assert grass1.color == "Зеленый"
+
+
+def test_lawngrass_subclass_add(grass1, grass2):
+    assert grass1 + grass2 == 35
+
+
+def test_lawngrass_subclass_add_error(grass1, grass2):
+    with pytest.raises(TypeError):
+        grass1 + 1

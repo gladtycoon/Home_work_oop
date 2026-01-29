@@ -42,6 +42,35 @@ class Product:
         )
 
 
+# Создание и инициализация класса Smartphone - наследника от класса Product
+class Smartphone(Product):
+    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+    def __add__(self, other):
+        if type(other) is Smartphone:
+            return self.quantity + other.quantity
+        raise TypeError
+
+
+# Создание и инициализация класса LawnGrass - наследника от класса Product
+class LawnGrass(Product):
+    def __init__(self, name, description, price, quantity, country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
+    def __add__(self, other):
+        if type(other) is LawnGrass:
+            return self.quantity + other.quantity
+        raise TypeError
+
+
 # Создание и инициализация класса Category
 class Category:
     name: str
@@ -68,8 +97,11 @@ class Category:
     # Метод, в который нужно передавать объект класса Product
     # и уже его записывать в приватный атрибут списка товаров
     def add_product(self, product: Product):
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
 
     # Геттер, который выводит список товаров в виде строк в заданном формате
     @property
