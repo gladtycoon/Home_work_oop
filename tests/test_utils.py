@@ -25,13 +25,13 @@ def test_read_json_valid_file(tmp_path):
 
 
 def test_read_json_file_not_found():
-    """Проверяет реакцию на отсутствие файла."""
+    """ Проверяет реакцию на отсутствие файла."""
     with pytest.raises(FileNotFoundError):
         read_json("non_existent_file.json")
 
 
 def test_create_objects_multiple_categories():
-    """Проверяет создание объектов для нескольких категорий."""
+    """ Проверяет создание объектов для нескольких категорий."""
     json_data = [
         {
             "name": "cat1",

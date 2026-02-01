@@ -1,5 +1,9 @@
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
+
+
 # Создание и инициализация класса Product
-class Product:
+class Product(BaseProduct, PrintMixin):
     name: str
     description: str
     price: float
@@ -10,6 +14,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     # Строковое отображение в заданном виде
     def __str__(self):
@@ -45,11 +50,11 @@ class Product:
 # Создание и инициализация класса Smartphone - наследника от класса Product
 class Smartphone(Product):
     def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
-        super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
         self.memory = memory
         self.color = color
+        super().__init__(name, description, price, quantity)
 
     def __add__(self, other):
         if type(other) is Smartphone:
@@ -60,10 +65,10 @@ class Smartphone(Product):
 # Создание и инициализация класса LawnGrass - наследника от класса Product
 class LawnGrass(Product):
     def __init__(self, name, description, price, quantity, country, germination_period, color):
-        super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
         self.color = color
+        super().__init__(name, description, price, quantity)
 
     def __add__(self, other):
         if type(other) is LawnGrass:
