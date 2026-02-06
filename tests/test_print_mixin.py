@@ -1,4 +1,4 @@
-from src.created_classes import Product, Smartphone, LawnGrass
+from src.created_classes import LawnGrass, Product, Smartphone
 
 
 def test_print_mixin(capsys):
