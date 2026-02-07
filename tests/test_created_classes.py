@@ -1,6 +1,7 @@
 import pytest
 
 from src.created_classes import Category, Product
+from tests.conftest import class_product
 
 
 def test_product_init(class_product):
@@ -104,3 +105,8 @@ def test_lawngrass_subclass_add(grass1, grass2):
 def test_lawngrass_subclass_add_error(grass1, grass2):
     with pytest.raises(TypeError):
         grass1 + 1
+
+
+def test_middle_price(category1, category_without_products):
+    assert category1.middle_price() == 140333.33333333334
+    assert category_without_products.middle_price() == 0
